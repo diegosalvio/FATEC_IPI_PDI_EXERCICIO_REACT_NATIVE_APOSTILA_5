@@ -2,29 +2,25 @@ import { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
 
 export default function App() {
-  const[contato, setContato] = useState({
-    nome: '',
-    telefone: ''
-  });
+  const [nome, setNome] = useState('')
+  const [telefone, setTelefone] = useState('')
 
-  const [contatos, setContatos] = useState([{}]);
+  const [contatos, setContatos] = useState({});
 
   const [contadorContatos, setContadorContatos] = useState(0);
 
   const capturarNome = (nomeDigitado) => {
-    setContato(nomeDigitado);
+    setNome(nomeDigitado);
   }
 
   const capturarTelefone = (telefoneDigitado) => {
-    setContato({
-      telefone: telefoneDigitado
-    });
+    setTelefone(telefoneDigitado);
   }
 
   const adicionarContato = () => {
     setContatos(contatos => {
       setContadorContatos(contadorContatos + 1)
-      return [{key: contadorContatos.toString(), value: contato}, ...contatos]
+      return [{key: contadorContatos.toString(), value: nome, value: telefone}, ...contatos]
     })
   }
 
@@ -36,7 +32,7 @@ export default function App() {
         <TextInput
           maxLength='100'
           onChangeText={capturarNome}
-          /* value={contato.nome} */
+          value={nome}
 
           placeholder='Digite o nome do contato'
         >
@@ -45,7 +41,7 @@ export default function App() {
           style={styles.textInput}
           maxLength='100'
           onChangeText={capturarTelefone}
-          /* value={contato.telefone} */
+          value={telefone}
 
           placeholder='Digite o telefone do contato'
           >
