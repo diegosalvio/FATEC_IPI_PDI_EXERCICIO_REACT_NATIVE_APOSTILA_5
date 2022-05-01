@@ -23,7 +23,7 @@ export default function App() {
       return [{key: contadorContatos.toString(), value: nome, telefone: telefone}, ...contatos]
       
     })
-    alert(contatos);
+    console.log(contatos);
   }
   
 
@@ -50,6 +50,7 @@ export default function App() {
           />
         <Button
           title='Add Contato'
+          color='pink'
           onPress={(s)=>{
             adicionarContato();
             setNome('');
@@ -62,14 +63,14 @@ export default function App() {
           c => (
             <View
               style={styles.flatList}>
-                <Text>
+                <Text style={styles.cardHeader} >
                   CONTATO
                 </Text>
-                <Text>
-                  {c.item.value}
+                <Text style={styles.cardNome}>
+                  Nome: {c.item.value}
                 </Text>
-                <Text>
-                  {c.item.telefone}
+                <Text style={styles.cardTelefone}>
+                  Telefone: {c.item.telefone}
                 </Text>
             </View>
           )
@@ -82,6 +83,7 @@ export default function App() {
 const styles = StyleSheet.create({
   telaPrincipal: {
     padding: 40,
+    
   },
   textInput: {
     borderBottomColor: 'black',
@@ -91,10 +93,22 @@ const styles = StyleSheet.create({
   },
   flatList: {
     padding: 12,
-    backgroundColor: '#ccc',
-    borderColor: '#000',
+    backgroundColor: 'pink',
+    borderColor: 'yellow',
     borderWidth: 1,
     borderRadius: 8,
     marginTop: 8
+  },
+  cardHeader: {
+    fontSize: 16, 
+    fontWeight: 'bold'
+  },
+  cardNome: {
+    padding: 6,
+    fontSize: 14
+  },
+  cardTelefone: {
+    padding: 6,
+    fontSize: 12
   }
 });
