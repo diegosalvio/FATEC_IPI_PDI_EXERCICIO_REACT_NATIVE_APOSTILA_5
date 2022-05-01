@@ -5,7 +5,6 @@ export default function App() {
   const [nome, setNome] = useState('');
   const [telefone, setTelefone] = useState('');
 
-  const [contato, setContato] = useState({})
 
   const [contatos, setContatos] = useState([]);
 
@@ -21,10 +20,10 @@ export default function App() {
   const adicionarContato = () => {
     setContatos(contatos => {
       setContadorContatos(contadorContatos + 1);
-      return [{key: contadorContatos.toString(), value: nome, value: telefone}, ...contatos]
+      return [{key: contadorContatos.toString(), value: nome, telefone: telefone}, ...contatos]
       
     })
-    console.log(contatos);
+    alert(contatos);
   }
   
 
@@ -32,6 +31,7 @@ export default function App() {
     <View style={styles.telaPrincipal}>
       <View>
         <TextInput
+          name='nome'
           style={styles.textInput}
           maxLength='50'
           onChangeText={capturarNome}
@@ -40,6 +40,7 @@ export default function App() {
           placeholder='Digite o nome do contato'
         />
         <TextInput
+          name='telefone'
           style={styles.textInput}
           maxLength='50'
           onChangeText={capturarTelefone}
@@ -62,7 +63,13 @@ export default function App() {
             <View
               style={styles.flatList}>
                 <Text>
-                  {c.item.contato}
+                  CONTATO
+                </Text>
+                <Text>
+                  {c.item.value}
+                </Text>
+                <Text>
+                  {c.item.telefone}
                 </Text>
             </View>
           )
