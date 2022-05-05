@@ -20,7 +20,7 @@ export default function App() {
   const adicionarContato = () => {
     setContatos(contatos => {
       setContadorContatos(contadorContatos + 1);
-      return [{key: contadorContatos.toString(), value: nome, telefone: telefone}, ...contatos]
+      return [{key: contadorContatos.toString(), nome: nome, telefone: telefone}, ...contatos]
       
     })
     console.log(contatos);
@@ -67,7 +67,7 @@ export default function App() {
                   CONTATO
                 </Text>
                 <Text style={styles.cardNome}>
-                  Nome: {c.item.value}
+                  Nome: {c.item.nome}
                 </Text>
                 <Text style={styles.cardTelefone}>
                   Telefone: {c.item.telefone}
@@ -83,6 +83,7 @@ export default function App() {
 const styles = StyleSheet.create({
   telaPrincipal: {
     padding: 40,
+    flexDirection: 'row',
     
   },
   textInput: {
@@ -92,12 +93,13 @@ const styles = StyleSheet.create({
     padding: 12
   },
   flatList: {
+    marginLeft: 8,
     padding: 12,
     backgroundColor: 'pink',
     borderColor: 'yellow',
     borderWidth: 1,
     borderRadius: 8,
-    marginTop: 8
+    marginTop: 8,
   },
   cardHeader: {
     fontSize: 16, 
